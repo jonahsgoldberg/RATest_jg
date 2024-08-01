@@ -230,7 +230,7 @@ aqrot<-function(w,W_z){
   f <- quantreg::akj(z,t)$dens
   t0 <- which(abs(t-0)==min(abs(t-0)))
   f0 <- f[t0]
-  q<-ceiling(max(f0*var(z)*sqrt((1-cor(z,w)^2))*(N^{0.9}/log(N))))
+  q<-ceiling(min(f0*var(z)*sqrt((1-cor(z,w)^2))*(N^{0.9}/log(N))))
   if(q<10){
     q<-10
   }else if(q>N^(0.9)/log(N)){
@@ -250,7 +250,7 @@ qrot<-function(w,W_z){
   f <- quantreg::akj(z,t)$dens
   t0 <- which(abs(t-0)==min(abs(t-0)))
   f0 <- f[t0]
-  q<-ceiling(max(f0*var(z)*sqrt(10*(1-cor(z,w)^2))*(N^{0.75}/log(N))))
+  q<-ceiling(min(f0*var(z)*sqrt(10*(1-cor(z,w)^2))*(N^{0.75}/log(N))))
   if(q<10){
     q<-10
   }else if(q>N^(0.9)/log(N)){
