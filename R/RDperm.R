@@ -166,8 +166,9 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     K<-length(W)
     c<-C.unitsphere(K)
     cS<-as.matrix(Sn)%*%c
-    stat_func_inputs <- as.list(cS,K,Sn)
-    TSn.joint<-max(lapply(stat_func_inputs,calc_stat.CvM))
+    stat_func_inputs <- list(cS,K,Sn)
+    apply_stat <- lapply(stat_func_inputs,calc_stat.CvM)
+    TSn.joint<-max(unlist(apply_stat))
     test_statistic.obs<-c(test_statistic.obs,TSn.joint)
     names(test_statistic.obs)<-c(n.test_statistic.obs,"joint")
     }
@@ -177,7 +178,7 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     S_perm_list<-lapply(sample.indexes,function(x,db) {db[x,]},Sn)
 
     K<-length(W)
-    stat_func_inputs <- as.list(S_perm_list,K,Sn)
+    stat_func_inputs <- list(S_perm_list,K,Sn)
     calc_stat_res<-lapply(stat_func_inputs,calc_stat.CvM)
 
 
