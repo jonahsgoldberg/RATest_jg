@@ -210,7 +210,7 @@ calc_stat.CvM<-function(x){
   else {
     stat<-apply(x,2,CvM.stat)
     n.stat<-names(stat)
-    K<-length(W)    #dim(x)[2]
+    #K<-dim(x)[2]
     c<-C.unitsphere(K)
     cS<-as.matrix(Sn)%*%c    #as.matrix(x)%*%c
     TSn.joint<-max(apply(cS,2,calc_stat.CvM))
