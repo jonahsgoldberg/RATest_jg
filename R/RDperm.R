@@ -166,7 +166,7 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     K<-length(W)
     c<-C.unitsphere(K)
     cS<-as.matrix(Sn)%*%c
-    TSn.joint<-max(apply(cS,2,CvM.stat))
+    TSn.joint<-max(apply(cS,2,calc_stat.CvM))
     test_statistic.obs<-c(test_statistic.obs,TSn.joint)
     names(test_statistic.obs)<-c(n.test_statistic.obs,"joint")
     }
