@@ -166,7 +166,7 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     K<-length(W)
     c<-C.unitsphere(K)
     cS<-as.matrix(Sn)%*%c
-    TSn.joint<-max(apply(cS,2,CvM.stat))
+    TSn.joint<-max(apply(cS,2,calc_stat.CvM))
     test_statistic.obs<-c(test_statistic.obs,TSn.joint)
     names(test_statistic.obs)<-c(n.test_statistic.obs,"joint")
     }
@@ -175,7 +175,7 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     sample.indexes = lapply(1:n.perm, function(x) sample(1:(2*q)))
     S_perm_list<-lapply(sample.indexes,function(x,db) {db[x,]},Sn)
 
-    calc_stat_res<-lapply(S_perm_list,CvM.stat)
+    calc_stat_res<-lapply(S_perm_list,calc_stat.CvM)
 
 
     #Step 6. Compute the p-value of the test
