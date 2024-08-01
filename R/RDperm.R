@@ -203,16 +203,16 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
 
 
 
-calc_stat.CvM<-function(x,W){
+calc_stat.CvM<-function(x){
   if(is.vector(x)==T){
     stat<-CvM.stat(x)
   }
   else {
     stat<-apply(x,2,CvM.stat)
     n.stat<-names(stat)
-    K<-length(W)    #dim(x)[2]
+    K<-dim(x)[2]
     c<-C.unitsphere(K)
-    cS<-as.matrix(Sn)%*%c    #as.matrix(x)%*%c
+    cS<-as.matrix(x)%*%c
     TSn.joint<-max(apply(cS,2,calc_stat.CvM))
     stat<-c(stat,TSn.joint)
     names(stat)<-c(n.stat,"joint")
