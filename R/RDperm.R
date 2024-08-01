@@ -267,7 +267,7 @@ C.unitsphere <- function(K){
   # Fill the matrix with random numbers in [-1,1]
   C <- apply(C,2,function(x) stats::runif(K,-1,1))
   # Normalize it so each column c of C is such that ||c||=1
-  C <- apply(C,2,function(x) x/sum(x))
+  C <- apply(C,2,function(x) x/sum(x^2))
   # Return C and the K canonical elemnts (vectors with zeros in
   # all coordinates except for one)
   return(cbind(C,diag(K)))
