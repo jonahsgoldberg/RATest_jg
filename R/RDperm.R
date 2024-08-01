@@ -224,7 +224,7 @@ calc_stat.CvM<-function(x){
 
 aqrot<-function(w,W_z){
   w<-W_z[,w]
-  z<-W_z[,"z"]
+  z<-as.numeric(W_z$z)
   N<-nrow(w)
   t <- seq(from=min(z),to=max(z),length.out = 2*N)
   f <- quantreg::akj(z,t)$dens
@@ -244,7 +244,7 @@ aqrot<-function(w,W_z){
 
 qrot<-function(w,W_z){
   w<-W_z[,w]
-  z<-W_z[,"z"]
+  z<-as.numeric(W_z$z)
   N<-nrow(w)
   t <- seq(from=min(z),to=max(z),length.out = 2*N)
   f <- quantreg::akj(z,t)$dens
