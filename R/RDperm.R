@@ -176,6 +176,7 @@ RDperm.base<-function(W,W_left, n_left, W_right, z, q, n.perm, test.statistic){
     sample.indexes = lapply(1:n.perm, function(x) sample(1:(2*q)))
     S_perm_list<-lapply(sample.indexes,function(x,db) {db[x,]},Sn)
 
+    K<-length(W)
     stat_func_inputs <- as.list(S_perm_list,K,Sn)
     calc_stat_res<-lapply(stat_func_inputs,calc_stat.CvM)
 
