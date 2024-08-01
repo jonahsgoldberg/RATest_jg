@@ -66,7 +66,7 @@ RDperm<-function(W,z,data,n.perm=499,q_type=10,cutoff=0,test.statistic="CvM"){
 
   # Selecting Q,
   if(q_type%in%c("rot","arot")){
-    w<-as.list(W)
+    w<-W
     if(q_type=="rot") rot<-lapply(w,qrot,W_z)
     if(q_type=="arot") rot<-lapply(w,aqrot,W_z)
     w<-mapply(c, w, rot, SIMPLIFY=FALSE)
