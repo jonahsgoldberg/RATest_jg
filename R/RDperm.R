@@ -265,7 +265,7 @@ C.unitsphere <- function(K){
   # Store Matrix
   C <- matrix(NA,nrow = K,ncol=100-K)
   # Fill the matrix with random numbers in [-1,1]
-  C <- apply(C,2,function(x) stats::runif(x,-1,1))
+  C <- apply(C,2,function(x) stats::runif(K,-1,1))
   # Normalize it so each column c of C is such that ||c||=1
   C <- apply(C,2,function(x) x/sum(x))
   # Return C and the K canonical elemnts (vectors with zeros in
